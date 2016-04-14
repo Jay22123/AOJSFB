@@ -1,4 +1,4 @@
-##["a001：哈囉"](http://zerojudge.tw/ShowProblem?problemid=a001)
+##[a001：哈囉](http://zerojudge.tw/ShowProblem?problemid=a001)
 ======
 評分方式：Tolerant 
 記憶體限制：512 MB
