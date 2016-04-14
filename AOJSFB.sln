@@ -16,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a003兩光法師占卜術",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a004文文的求婚", "a004文文的求婚\a004文文的求婚.vcxproj", "{C133A046-154A-402B-A2C9-25234EF61E1B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a005Eva的回家作業", "a005Eva的回家作業\a005Eva的回家作業.vcxproj", "{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -56,6 +58,14 @@ Global
 		{C133A046-154A-402B-A2C9-25234EF61E1B}.Release|x64.Build.0 = Release|x64
 		{C133A046-154A-402B-A2C9-25234EF61E1B}.Release|x86.ActiveCfg = Release|Win32
 		{C133A046-154A-402B-A2C9-25234EF61E1B}.Release|x86.Build.0 = Release|Win32
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Debug|x64.ActiveCfg = Debug|x64
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Debug|x64.Build.0 = Debug|x64
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Debug|x86.ActiveCfg = Debug|Win32
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Debug|x86.Build.0 = Debug|Win32
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Release|x64.ActiveCfg = Release|x64
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Release|x64.Build.0 = Release|x64
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Release|x86.ActiveCfg = Release|Win32
+		{13D1E2F3-1257-4C53-ACD4-D7426F5FB58E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
