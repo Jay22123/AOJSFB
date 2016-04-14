@@ -1,4 +1,4 @@
-##[編號：標題](題目網址)
+##[a003：兩光法師占卜術](http://zerojudge.tw/ShowProblem?problemid=a003)
 ======
 評分方式：Tolerant 
 記憶體限制：512 MB
