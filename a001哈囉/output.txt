@@ -1,3 +1,5 @@
 hello, world
 hello, C++
 hello, mary
+hello, C
+hello, Java

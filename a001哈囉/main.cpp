@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[])
 {
-	char s[1000] = { NULL };
+	char s[1000];
 
 	while (scanf("%s", &s) != EOF)
 	{

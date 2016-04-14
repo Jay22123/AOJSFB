@@ -1,3 +1,5 @@
 world
 C++
 mary
+C
+Java
