@@ -24,32 +24,41 @@ const RomeNumValue ROME_NUM[] = {
 	{ 'M', 1000 }
 };
 
-int RomeToInt(char *romeNum, unsigned int strLen)
+int RomeToInt(char *romeNum)
 {
-	if (strLen > 0)
+	if (*(romeNum) != '\0')
 	{
-		bool end = false;
-		int i, RN_i, sum = 0, num;
+		int RN_i, sum = 0;
 
-		for (RN_i = 0;
-			RN_i < 7, sum == 0, end != true;
-			RN_i++)
+		for (RN_i = 0; RN_i < 7; RN_i++)
 		{
-			for (i = 0;
-				*(romeNum + i) == ROME_NUM[RN_i].romeNum, i < strLen;
-				i++)
+			bool end = false;
+			while (*(romeNum) != '\0'
+				&& *(romeNum) == ROME_NUM[RN_i].romeNum)
 			{
-				sum += ROME_NUM[RN_i].romeNum;
+				sum += ROME_NUM[RN_i].num;
+				++romeNum;
 				end = true;
 			}
+			if (end)
+				break;
 		}
 
-		num = RomeToInt(romeNum, strLen - i);
+		int num = RomeToInt(romeNum);
+
 		if (sum < num)
 			sum = -sum;
 
 		return sum + num;
 	}
+
+	return 0;
+}
+
+char *IntToRome(int num)
+{
+	if (num == 0)
+		return "ZERO";
 
 	return 0;
 }
@@ -68,12 +77,12 @@ int main(int argc, char *argv[])
 		scanf("%s", &romeNum[1]);
 
 		int num[2] = {
-			RomeToInt(romeNum[0], strlen(romeNum[0])),
-			RomeToInt(romeNum[1], strlen(romeNum[1]))
+			RomeToInt(romeNum[0]),
+			RomeToInt(romeNum[1])
 		};
-		debug(printf("[DEBUG]%d %d", num[0], num[1]));
+		debug(printf("[DEBUG]%d %d\n", num[0], num[1]));
 
-		printf("\n");
+		printf("%s\n", IntToRome(num[0] - num[1]));
 	}
 
 	return 0;
