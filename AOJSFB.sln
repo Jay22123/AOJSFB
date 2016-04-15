@@ -28,6 +28,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a013羅馬數字", "a013羅
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a015矩陣的翻轉", "a015矩陣的翻轉\a015矩陣的翻轉.vcxproj", "{2DD6B1FD-76E0-4221-ABBC-E059C89C2579}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a016數獨(SUDOKU)", "a016數獨(SUDOKU)\a016數獨(SUDOKU).vcxproj", "{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -116,6 +118,14 @@ Global
 		{2DD6B1FD-76E0-4221-ABBC-E059C89C2579}.Release|x64.Build.0 = Release|x64
 		{2DD6B1FD-76E0-4221-ABBC-E059C89C2579}.Release|x86.ActiveCfg = Release|Win32
 		{2DD6B1FD-76E0-4221-ABBC-E059C89C2579}.Release|x86.Build.0 = Release|Win32
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Debug|x64.ActiveCfg = Debug|x64
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Debug|x64.Build.0 = Debug|x64
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Debug|x86.ActiveCfg = Debug|Win32
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Debug|x86.Build.0 = Debug|Win32
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x64.ActiveCfg = Release|x64
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x64.Build.0 = Release|x64
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.ActiveCfg = Release|Win32
+		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
