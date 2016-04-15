@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a015矩陣的翻轉", "a015
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a016數獨(SUDOKU)", "a016數獨(SUDOKU)\a016數獨(SUDOKU).vcxproj", "{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a020身分證檢驗", "a020身分證檢驗\a020身分證檢驗.vcxproj", "{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -126,6 +128,14 @@ Global
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x64.Build.0 = Release|x64
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.ActiveCfg = Release|Win32
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.Build.0 = Release|Win32
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Debug|x64.ActiveCfg = Debug|x64
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Debug|x64.Build.0 = Debug|x64
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Debug|x86.ActiveCfg = Debug|Win32
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Debug|x86.Build.0 = Debug|Win32
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x64.ActiveCfg = Release|x64
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x64.Build.0 = Release|x64
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x86.ActiveCfg = Release|Win32
+		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
