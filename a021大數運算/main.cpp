@@ -11,37 +11,40 @@
 
 #define L_NUM_VALUE_MAX 10
 #define L_NUM_BITS 500
+#define L_NUM_SIZE sizeof(int) * L_NUM_BITS
+
+#define MAX(a,b) ((a) > (b))?(a):(b)
 
 int LnumTemp[L_NUM_BITS] = { 0 };
-inline void clearTemp()
+inline void clearLnum(int *Lnum)
 {
-	memset(LnumTemp, 0, sizeof(LnumTemp));
+	memset(Lnum, 0, L_NUM_SIZE);
 }
 
-void printLnum(int Lnum[L_NUM_BITS])
+void printLnum(int *Lnum)
 {
 	int bit;
 	bool isValidBit = false;
 	for (bit = L_NUM_BITS - 1; bit >= 0; bit--)
 	{
-		if (!isValidBit && Lnum[bit] != 0)
+		if (!isValidBit && *(Lnum + bit) != 0)
 			isValidBit = true;
 
 		if (isValidBit)
-			printf("%d", Lnum[bit]);
+			printf("%d", *(Lnum + bit));
 	}
 	if (!isValidBit)
 		printf("0");
 }
 
-void strToLnum(char numStr[501], int Lnum[L_NUM_BITS])
+void strToLnum(char *numStr, int *Lnum)
 {
 	char *numStrPtr = numStr;
 	int bit, numStrLen = strlen(numStr);
 
 	for (bit = numStrLen - 1; bit >= 0; bit--)
 	{
-		sscanf(numStrPtr++, "%1d", &Lnum[bit]);
+		sscanf(numStrPtr++, "%1d", (Lnum + bit));
 	}
 
 	debug(
@@ -51,20 +54,20 @@ void strToLnum(char numStr[501], int Lnum[L_NUM_BITS])
 	);
 }
 
-void LnumAdd(int a[L_NUM_BITS], int b[L_NUM_BITS], int sum[L_NUM_BITS])
+void LnumAdd(int *a, int *b, int *sum)
 {
-	clearTemp();
+	clearLnum(LnumTemp);
 	int bit;
 	for (bit = 0; bit < L_NUM_BITS; bit++)
 	{
-		LnumTemp[bit] += (a[bit] + b[bit]);
+		*(LnumTemp + bit) += (*(a + bit) + *(b + bit));
 
 		if (bit + 1 < L_NUM_BITS && LnumTemp[bit] >= L_NUM_VALUE_MAX)
-			LnumTemp[bit + 1] += LnumTemp[bit] / L_NUM_VALUE_MAX;
+			*(LnumTemp + bit + 1) += *(LnumTemp + bit) / L_NUM_VALUE_MAX;
 
-		LnumTemp[bit] %= L_NUM_VALUE_MAX;
+		*(LnumTemp + bit) %= L_NUM_VALUE_MAX;
 	}
-	memcpy(sum, LnumTemp, sizeof(LnumTemp));
+	memcpy(sum, LnumTemp, L_NUM_SIZE);
 
 	debug(
 		printf("[DEBUG]LnumAdd - ");
@@ -73,13 +76,63 @@ void LnumAdd(int a[L_NUM_BITS], int b[L_NUM_BITS], int sum[L_NUM_BITS])
 	);
 }
 
-void LnumSub(int a[L_NUM_BITS], int b[L_NUM_BITS], int sub[L_NUM_BITS])
+void LnumIncr(int *a)
 {
-	clearTemp();
+	int Lnum_1[L_NUM_BITS] = { 0 };
+	Lnum_1[0] = 1;
+	LnumAdd(a, Lnum_1, a);
+}
+
+int getMSB(int *num)
+{
+	int bit;
+	for (bit = L_NUM_BITS - 1; bit >= 0; bit--)
+	{
+		if (*(num + bit) != 0)
+			return bit;
+	}
+
+	return 0;
+}
+
+/* is (A < B) ? */
+bool lessThan(int *a, int *b)
+{
+	bool notEqual = true;
+	int bit;
+	for (bit = MAX(getMSB(a), getMSB(b)); bit >= 0; bit--)
+	{
+		if (*(a + bit) > *(b + bit))
+			return false;
+		else if (*(a + bit) == *(b + bit))
+			notEqual &= false;
+	}
+
+	return (notEqual == false);
+}
+
+void LnumSub(int *a, int *b, int *sub)
+{
+	clearLnum(LnumTemp);
+
+	int *max, *min;
+
+	bool negative = lessThan(a, b);
+	if (negative)
+	{
+		max = b;
+		min = a;
+	}
+	else
+	{
+		max = a;
+		min = b;
+	}
+
 	int bit;
 	for (bit = 0; bit < L_NUM_BITS; bit++)
 	{
-		LnumTemp[bit] = (LnumTemp[bit] + a[bit] - b[bit]);
+		LnumTemp[bit] += (*(max + bit) - *(min + bit));
 
 		if ((LnumTemp[bit] < 0)
 			&& ((bit + 1) < L_NUM_BITS))
@@ -88,20 +141,22 @@ void LnumSub(int a[L_NUM_BITS], int b[L_NUM_BITS], int sub[L_NUM_BITS])
 			LnumTemp[bit] += L_NUM_VALUE_MAX;
 		}
 	}
-	memcpy(sub, LnumTemp, sizeof(LnumTemp));
+
+	if (negative)
+		LnumTemp[getMSB(LnumTemp)] *= -1;
+	memcpy(sub, LnumTemp, L_NUM_SIZE);
 
 	debug(
-		printf("[DEBUG]LnumAdd - ");
+		printf("[DEBUG]LnumSub - ");
 	printLnum(sub);
 	printf("\n");
 	);
 }
 
-void shift(int num[L_NUM_BITS], int shiftBit)
+void shift(int *num, int shiftBit)
 {
-	clearTemp();
-	debug(printf("[DEBUG](sizeof(num) * L_NUM_BITS)=%d\n", sizeof(num) * L_NUM_BITS));
-	memcpy(LnumTemp, num, sizeof(num) * L_NUM_BITS);
+	clearLnum(LnumTemp);
+	memcpy(LnumTemp, num, L_NUM_SIZE);
 	debug(
 		printf("[DEBUG]shift - src: ");
 	printLnum(LnumTemp);
@@ -114,10 +169,10 @@ void shift(int num[L_NUM_BITS], int shiftBit)
 		if ((bit - shiftBit) >= 0
 			&& (bit - shiftBit) < L_NUM_BITS)
 		{
-			num[bit] = LnumTemp[bit - shiftBit];
+			*(num + bit) = LnumTemp[bit - shiftBit];
 		}
 		else
-			num[bit] = 0;
+			*(num + bit) = 0;
 	}
 
 	debug(
@@ -127,7 +182,7 @@ void shift(int num[L_NUM_BITS], int shiftBit)
 	);
 }
 
-void LnumMul(int a[L_NUM_BITS], int b[L_NUM_BITS], int product[L_NUM_BITS])
+void LnumMul(int *a, int *b, int *product)
 {
 	int bit;
 	for (bit = 0; bit < L_NUM_BITS; bit++)
@@ -147,17 +202,20 @@ void LnumMul(int a[L_NUM_BITS], int b[L_NUM_BITS], int product[L_NUM_BITS])
 	);
 }
 
-void LnumDiv(int a[L_NUM_BITS], int b[L_NUM_BITS], int quotient[L_NUM_BITS])
+void LnumDiv(int *a, int *b, int *quotient)
 {
-	int bit;
-	for (bit = 0; bit < L_NUM_BITS; bit++)
+	debug(
+		printf("[DEBUG]LnumDiv - (a < b) = ");
+	if (lessThan(a, b))
+		printf("true\n");
+	else
+		printf("false\n");
+	);
+
+	while (lessThan(a, b) != true)
 	{
-		int count;
-		for (count = 0; count < b[bit]; count++)
-		{
-			LnumAdd(quotient, a, quotient);
-		}
-		shift(a, 1);
+		LnumSub(a, b, a);
+		LnumIncr(quotient);
 	}
 
 	debug(
@@ -189,7 +247,7 @@ int main(int argc, char *argv[])
 		case '*':
 			LnumMul(num[0], num[1], num[2]); break;
 		case '/':
-			/*LnumAdd(num[0], num[1], num[2]);*/ break;
+			LnumDiv(num[0], num[1], num[2]); break;
 		default:
 			debug(printf("[DEBUG]op != '+'.'-'.'*'.'/'\n"));
 			break;
