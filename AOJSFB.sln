@@ -32,6 +32,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a016數獨(SUDOKU)", "a016�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a020身分證檢驗", "a020身分證檢驗\a020身分證檢驗.vcxproj", "{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a021大數運算", "a021大數運算\a021大數運算.vcxproj", "{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -136,6 +138,14 @@ Global
 		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x64.Build.0 = Release|x64
 		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x86.ActiveCfg = Release|Win32
 		{E413E3A5-40FF-4487-9356-66FBD6F6BF8C}.Release|x86.Build.0 = Release|Win32
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Debug|x64.ActiveCfg = Debug|x64
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Debug|x64.Build.0 = Debug|x64
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Debug|x86.ActiveCfg = Debug|Win32
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Debug|x86.Build.0 = Debug|Win32
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Release|x64.ActiveCfg = Release|x64
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Release|x64.Build.0 = Release|x64
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Release|x86.ActiveCfg = Release|Win32
+		{1004E160-6AD3-409B-B84B-0A7F0D1DBA74}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
