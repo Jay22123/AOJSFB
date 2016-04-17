@@ -281,7 +281,6 @@ int main(int argc, char *argv[])
 			debug(printf("[DEBUG]op != '+'.'-'.'*'.'/'\n"));
 			break;
 		}
-
 		printLnum(num[2]);
 		printf("\n");
 	}
