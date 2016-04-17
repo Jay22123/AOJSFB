@@ -5,6 +5,7 @@
 #endif
 
 #include <stdio.h>
+#include <math.h>
 #include <memory.h>
 #include <string.h>
 #include <stdbool.h>
@@ -12,8 +13,6 @@
 #define L_NUM_VALUE_MAX 10
 #define L_NUM_BITS 500
 #define L_NUM_SIZE (sizeof(int) * L_NUM_BITS)
-
-int LnumTemp[L_NUM_BITS] = { 0 };
 
 inline void clearLnum(int *Lnum)
 {
@@ -63,6 +62,9 @@ int getMSB(int *Lnum)
 		if (*(Lnum + bit) != 0)
 			return bit;
 	}
+
+	debug(printf("[DEBUG]getMSB: bit=%d\n", bit));
+
 	return 0;
 }
 
@@ -115,11 +117,83 @@ void LnumAdd(int *a, int *b, int *result)
 	);
 }
 
+/* is(a<b)? */
+bool Lnum_lessThan(int *a, int *b)
+{
+	const unsigned int a_MSB = getMSB(a), b_MSB = getMSB(b);
+
+	if (a_MSB != b_MSB)
+	{
+		int bit = (int)fmax(a_MSB, b_MSB);
+		return *(a + bit) < *(b + bit);
+	}
+
+	if (*(a + a_MSB) == *(b + b_MSB))
+	{
+		int bit;
+		for (bit = a_MSB - 1; bit >= 0; bit--)
+		{
+			if (*(a + bit) == *(b + bit))
+				continue;
+
+			/* 如果 a 小於 b */
+			return (*(a + bit) < *(b + bit));
+		}
+
+		/* 迴圈中無return，所以 a 等於 b */
+		return false;
+	}
+
+	return (*(a + a_MSB) < *(b + b_MSB));
+}
+
 void LnumSub(int *a, int *b, int *result)
-{}
+{
+	clearLnum(result);
+
+	bool negative = Lnum_lessThan(a, b);
+	int *max = a, *min = b;
+	if (negative)
+	{
+		max = b;
+		min = a;
+	}
+
+	int bit;
+	for (bit = 0; bit < L_NUM_BITS; bit++)
+	{
+		*(result + bit) += *(max + bit) - *(min + bit);
+
+		if (*(result + bit) < 0 &&
+			(bit + 1) < L_NUM_BITS)
+		{
+			--(*(result + bit + 1));
+			*(result + bit) += L_NUM_VALUE_MAX;
+		}
+	}
+
+	if (negative)
+		*(result + getMSB(result)) *= -1;
+
+	debug(
+		printf("[DEBUG]LnumSub: ");
+	printLnum(result);
+	printf("\n");
+	);
+}
+
+/* 暫存資料使用 */
+int LnumTemp[L_NUM_BITS] = { 0 };
 
 void LnumMul(int *a, int *b, int *result)
-{}
+{
+	const int b_MSB = getMSB(b);
+	int bit;
+	for (bit = 0; bit < b_MSB; bit++)
+	{
+
+	}
+}
 
 void LnumDiv(int *a, int *b, int *result)
 {}
@@ -136,6 +210,13 @@ int main(int argc, char *argv[])
 
 		strToLnum(numStr[0], num[0]);
 		strToLnum(numStr[1], num[1]);
+
+		printf("[DEBUG]getMSB(num[0]):%d\n", getMSB(num[0]));
+		printf("[DEBUG]getMSB(num[1]):%d\n", getMSB(num[1]));
+		if (Lnum_lessThan(num[0], num[1]))
+			printf("[DEBUG]lessThan:true\n");
+		else
+			printf("[DEBUG]lessThan:false\n");
 
 		switch (op)
 		{
