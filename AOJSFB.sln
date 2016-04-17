@@ -40,6 +40,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a024最大公因數(GCD)", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a034二進位制轉換", "a034二進位制轉換\a034二進位制轉換.vcxproj", "{0E604015-812B-4F85-B192-0F7BC4B7BFE1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a038數字翻轉", "a038數字翻轉\a038數字翻轉.vcxproj", "{97DC9C22-A657-402F-A621-A17FDD0849A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -176,6 +178,14 @@ Global
 		{0E604015-812B-4F85-B192-0F7BC4B7BFE1}.Release|x64.Build.0 = Release|x64
 		{0E604015-812B-4F85-B192-0F7BC4B7BFE1}.Release|x86.ActiveCfg = Release|Win32
 		{0E604015-812B-4F85-B192-0F7BC4B7BFE1}.Release|x86.Build.0 = Release|Win32
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Debug|x64.ActiveCfg = Debug|x64
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Debug|x64.Build.0 = Debug|x64
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Debug|x86.ActiveCfg = Debug|Win32
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Debug|x86.Build.0 = Debug|Win32
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Release|x64.ActiveCfg = Release|x64
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Release|x64.Build.0 = Release|x64
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Release|x86.ActiveCfg = Release|Win32
+		{97DC9C22-A657-402F-A621-A17FDD0849A3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
