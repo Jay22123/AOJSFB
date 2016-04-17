@@ -82,9 +82,13 @@ void shift(int *Lnum, int *shift, int offset)
 	{
 		if (bit + offset >= 0 &&
 			bit + offset < L_NUM_BITS)
-			*(shift + bit + offset) = *(Lnum + bit);
-		else
-			*(shift + bit + offset) = 0;
+		{
+			if (bit >= 0 &&
+				bit < L_NUM_BITS)
+				*(shift + bit + offset) = *(Lnum + bit);
+			else
+				*(shift + bit + offset) = 0;
+		}
 	}
 
 	debug(
@@ -96,19 +100,21 @@ void shift(int *Lnum, int *shift, int offset)
 
 void LnumAdd(int *a, int *b, int *result)
 {
-	clearLnum(result);
+	int LnumTemp[L_NUM_BITS] = { 0 };
 
 	int bit;
 	for (bit = 0; bit < L_NUM_BITS; bit++)
 	{
-		*(result + bit) += *(a + bit) + *(b + bit);
-		if (*(result + bit) >= L_NUM_VALUE_MAX)
+		*(LnumTemp + bit) += *(a + bit) + *(b + bit);
+		if (*(LnumTemp + bit) >= L_NUM_VALUE_MAX)
 		{
 			if ((bit + 1) < L_NUM_BITS)
-				*(result + bit + 1) += *(result + bit) / 10;
-			*(result + bit) %= 10;
+				*(LnumTemp + bit + 1) += *(LnumTemp + bit) / 10;
+			*(LnumTemp + bit) %= 10;
 		}
 	}
+
+	memcpy(result, LnumTemp, L_NUM_SIZE);
 
 	debug(
 		printf("[DEBUG]LnumAdd: ");
@@ -149,7 +155,7 @@ bool Lnum_lessThan(int *a, int *b)
 
 void LnumSub(int *a, int *b, int *result)
 {
-	clearLnum(result);
+	int LnumTemp[L_NUM_BITS] = { 0 };
 
 	bool negative = Lnum_lessThan(a, b);
 	int *max = a, *min = b;
@@ -162,18 +168,20 @@ void LnumSub(int *a, int *b, int *result)
 	int bit;
 	for (bit = 0; bit < L_NUM_BITS; bit++)
 	{
-		*(result + bit) += *(max + bit) - *(min + bit);
+		*(LnumTemp + bit) += *(max + bit) - *(min + bit);
 
-		if (*(result + bit) < 0 &&
+		if (*(LnumTemp + bit) < 0 &&
 			(bit + 1) < L_NUM_BITS)
 		{
-			--(*(result + bit + 1));
-			*(result + bit) += L_NUM_VALUE_MAX;
+			--(*(LnumTemp + bit + 1));
+			*(LnumTemp + bit) += L_NUM_VALUE_MAX;
 		}
 	}
 
 	if (negative)
-		*(result + getMSB(result)) *= -1;
+		*(LnumTemp + getMSB(LnumTemp)) *= -1;
+
+	memcpy(result, LnumTemp, L_NUM_SIZE);
 
 	debug(
 		printf("[DEBUG]LnumSub: ");
@@ -182,21 +190,37 @@ void LnumSub(int *a, int *b, int *result)
 	);
 }
 
-/* 暫存資料使用 */
-int LnumTemp[L_NUM_BITS] = { 0 };
-
 void LnumMul(int *a, int *b, int *result)
 {
+	clearLnum(result);
+	int LnumTemp[L_NUM_BITS] = { 0 };
+
 	const int b_MSB = getMSB(b);
 	int bit;
-	for (bit = 0; bit < b_MSB; bit++)
+	for (bit = 0; bit <= b_MSB; bit++)
 	{
-
+		if (*(b + bit) > 0)
+		{
+			shift(a, LnumTemp, bit);
+			int count;
+			for (count = 0; count < *(b + bit); count++)
+			{
+				LnumAdd(result, LnumTemp, result);
+			}
+		}
 	}
+
+	debug(
+		printf("[DEBUG]LnumMul: ");
+	printLnum(result);
+	printf("\n");
+	);
 }
 
 void LnumDiv(int *a, int *b, int *result)
-{}
+{
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -210,14 +234,7 @@ int main(int argc, char *argv[])
 
 		strToLnum(numStr[0], num[0]);
 		strToLnum(numStr[1], num[1]);
-
-		printf("[DEBUG]getMSB(num[0]):%d\n", getMSB(num[0]));
-		printf("[DEBUG]getMSB(num[1]):%d\n", getMSB(num[1]));
-		if (Lnum_lessThan(num[0], num[1]))
-			printf("[DEBUG]lessThan:true\n");
-		else
-			printf("[DEBUG]lessThan:false\n");
-
+		
 		switch (op)
 		{
 		case '+':
