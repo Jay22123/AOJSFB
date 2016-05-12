@@ -6,70 +6,114 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 #define MAX_INPUT_TEST_DATA 200000
+#define PRIME_TABLE_MAX      46341  //sqrt(2147483647)
+
+int primeNumListCount = 0;
+int primeNumList[PRIME_TABLE_MAX] = { 0 };
+
+#define getListMaxPrime() (primeNumList[primeNumListCount - 1])
+#define addPrimeNumToList(x) (primeNumList[primeNumListCount++] = (x))
+
+void initprimeNumList()
+{
+	if (primeNumListCount > 0)
+		return;
+
+	addPrimeNumToList(2);
+	addPrimeNumToList(3);
+	addPrimeNumToList(5);
+	addPrimeNumToList(7);
+	addPrimeNumToList(11);
+}
+
+void primeNumListPlus(unsigned int newLimit)
+{
+	int sqrtLimit = sqrt(newLimit);
+	if (sqrtLimit > getListMaxPrime())
+	{
+		// 狦借计程计穝耎糤借计
+		int num;
+		for (num = getListMaxPrime() + 2;
+			num < sqrtLimit;
+			num += 2)
+		{
+			bool isPrime = true;
+			int list_i;
+			for (list_i = 0;
+				list_i < primeNumListCount;
+				list_i++)
+			{
+				if (num % primeNumList[list_i] == 0)
+				{
+					isPrime = false;
+					break;
+				}
+			}
+			if (isPrime)
+				addPrimeNumToList(num);
+		}
+	}
+}
 
 int main(int argc, char *argv[])
 {
-	int input[MAX_INPUT_TEST_DATA],
-		input_count = 0,
-		maxValue = 0;
+	initprimeNumList();
 
-	while (scanf("%d", &input[input_count]) != EOF)
+	int num;
+	while (scanf("%d", &num) != EOF)
 	{
-		maxValue = fmax(maxValue, input[input_count]);
-		input_count++;
-	}
+		debug(printf("[DEBUG] %d\n", num));
+		primeNumListPlus(num);
 
-	const int max_sqrt = ((int)ceil(sqrt(maxValue)));
-	int i,
-		primeTable[max_sqrt],
-		tableCount = 0;
-
-	primeTable[tableCount++] = 2;
-	for (i = 3; i <= max_sqrt; i += 2)
-	{
-		int j, flag = 0;
-		for (j = 0; j < tableCount; j++)
+		if (num <= getListMaxPrime())
 		{
-			if (i % primeTable[j] == 0)
+			bool isPrime = false;
+			int list_i;
+			for (list_i = 0;
+				list_i < primeNumListCount;
+				list_i++)
 			{
-				flag = 1;
-				break;
+				if (num == primeNumList[list_i])
+					isPrime = true;
 			}
-		}
-		if (!flag)
-		{
-			primeTable[tableCount++] = i;
-		}
-	}
-	/*
-	for(i = 0; i < tableCount; i++)
-	{
-	printf("primeTable[%d] = %d\n", i, primeTable[i]);
-	}
-	*/
-	for (i = 0; i < input_count; i++)
-	{
-		int j, flag = 0;
-		for (j = 0; j < tableCount && input[i] > primeTable[j]; j++)
-		{
-			if (input[i] % primeTable[j] == 0)
-			{
-				flag = 1;
-				break;
-			}
-		}
-		if (flag)
-		{
-			printf("獶借计\n");
+			if (isPrime)
+				printf("借计\n");
+			else
+				printf("獶借计\n");
 		}
 		else
 		{
-			printf("借计\n");
+			bool isPrime = true;
+			int list_i;
+			for (list_i = 0;
+				list_i < primeNumListCount;
+				list_i++)
+			{
+				if (num % primeNumList[list_i] == 0)
+				{
+					isPrime = false;
+					break;
+				}
+			}
+			if (isPrime)
+				printf("借计\n");
+			else
+				printf("獶借计\n");
 		}
 	}
 
+	debug(
+		int debug_i;
+	for (debug_i = 0;
+		debug_i < primeNumListCount;
+		debug_i++)
+	{
+		printf("[DEBUG] primeNumList[%d] = %d\n",
+			debug_i, primeNumList[debug_i]);
+	});
 
 	return 0;
 }
