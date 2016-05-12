@@ -6,31 +6,34 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ctype.h>
 
 int main(int argc, char *argv[])
 {
-	char x[500];
-	int i, temp, n, p;
+	char s[1000] = { NULL };
 
-	while (gets(x) != 0)
+	while (gets(s) != 0)
 	{
+		bool isWord = false;
+		int i, word = 0;
 
-		for (i = 0, temp = 0, n = 0; i <= strlen(x); i++)
+		for (i = 0; i < strlen(s); i++)
 		{
-			p = n;
-			if (x[i] > 64 && x[i] < 91 ||
-				x[i] > 96 && x[i] < 123)
-				n = 1;
-			else if (x[i] == '\0')
+			if (isalpha(s[i]))
+			{
+				if (!isWord)
+					++word;
+				isWord = true;
+				continue;
+			}
+			else if (s[i] == '\0')
 				break;
 			else
-				n = 0;
-
-			if (p == 0 && n == 1)
-				temp++;
+				isWord = false;
 		}
-		printf("%d\n", temp);
+
+		printf("%d\n", word);
 	}
 
 	return 0;
