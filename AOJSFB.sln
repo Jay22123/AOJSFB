@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a015矩陣的翻轉", "a015
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a016數獨(SUDOKU)", "a016數獨(SUDOKU)\a016數獨(SUDOKU).vcxproj", "{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a011 00494 - Kindergarten Counting Game", "a011 00494 - Kindergarten Counting Game\a011 00494 - Kindergarten Counting Game.vcxproj", "{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -126,6 +128,14 @@ Global
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x64.Build.0 = Release|x64
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.ActiveCfg = Release|Win32
 		{D78EAB3F-C2F5-4F11-8A36-6FAA7DEA2711}.Release|x86.Build.0 = Release|Win32
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Debug|x64.ActiveCfg = Debug|x64
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Debug|x64.Build.0 = Debug|x64
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Debug|x86.Build.0 = Debug|Win32
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Release|x64.ActiveCfg = Release|x64
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Release|x64.Build.0 = Release|x64
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Release|x86.ActiveCfg = Release|Win32
+		{DB8078AA-0F45-42F9-AFA6-2D596F4C316C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
