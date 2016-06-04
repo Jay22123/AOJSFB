@@ -64,6 +64,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a059完全平方和", "a059
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a065提款卡密碼", "a065提款卡密碼\a065提款卡密碼.vcxproj", "{68F12C8F-14A0-4823-A44E-8A56864E6B60}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a104排序", "a104排序\a104排序.vcxproj", "{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -296,6 +298,14 @@ Global
 		{68F12C8F-14A0-4823-A44E-8A56864E6B60}.Release|x64.Build.0 = Release|x64
 		{68F12C8F-14A0-4823-A44E-8A56864E6B60}.Release|x86.ActiveCfg = Release|Win32
 		{68F12C8F-14A0-4823-A44E-8A56864E6B60}.Release|x86.Build.0 = Release|Win32
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Debug|x64.ActiveCfg = Debug|x64
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Debug|x64.Build.0 = Debug|x64
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Debug|x86.ActiveCfg = Debug|Win32
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Debug|x86.Build.0 = Debug|Win32
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Release|x64.ActiveCfg = Release|x64
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Release|x64.Build.0 = Release|x64
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Release|x86.ActiveCfg = Release|Win32
+		{3E69B4AD-3A6C-44E1-9EE5-DC7F6831D943}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
