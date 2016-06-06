@@ -70,6 +70,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a121質數又來囉", "a121
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a147Print it all", "a147Print it all\a147Print it all.vcxproj", "{CEEF5957-1599-4595-8250-752168C116C1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a148You Cannot Pass", "a148You Cannot Pass\a148You Cannot Pass.vcxproj", "{FEC07991-73A0-4E29-96BC-9211C64E79E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -326,6 +328,14 @@ Global
 		{CEEF5957-1599-4595-8250-752168C116C1}.Release|x64.Build.0 = Release|x64
 		{CEEF5957-1599-4595-8250-752168C116C1}.Release|x86.ActiveCfg = Release|Win32
 		{CEEF5957-1599-4595-8250-752168C116C1}.Release|x86.Build.0 = Release|Win32
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Debug|x64.ActiveCfg = Debug|x64
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Debug|x64.Build.0 = Debug|x64
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Debug|x86.Build.0 = Debug|Win32
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Release|x64.ActiveCfg = Release|x64
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Release|x64.Build.0 = Release|x64
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Release|x86.ActiveCfg = Release|Win32
+		{FEC07991-73A0-4E29-96BC-9211C64E79E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
