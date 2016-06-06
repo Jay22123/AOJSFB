@@ -28,7 +28,8 @@
 
 - - -
 提示：  
-	無
+	[等差數列與等差級數](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97#.E7.AD.89.E5.B7.AE.E4.B8.AD.E9.A0.85)
+	[求和符號](https://zh.wikipedia.org/wiki/%E6%B1%82%E5%92%8C%E7%AC%A6%E5%8F%B7#.E6.95.B8.E5.88.97.E6.B1.82.E5.92.8C.E5.85.AC.E5.BC.8F)
 
 標籤：  
 	[數列](http://zerojudge.tw/Problems?tag=%E6%95%B8%E5%88%97)
