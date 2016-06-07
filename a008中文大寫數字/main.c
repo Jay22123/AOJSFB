@@ -5,71 +5,104 @@
 #endif
 
 #include <stdio.h>
+#include <stdbool.h>
+
+#define MAX_INPUT_BITS 12
+
+bool checkZero(int *num, int bit)
+{
+	bool isZero = true;
+	int i;
+	for (i = bit; i >= 0 && isZero; i--)
+	{
+		isZero = isZero && (*(num + i) == 0);
+	}
+
+	return isZero;
+}
 
 int main(int argc, char *argv[])
 {
-	int x, tmp, n[11] = { 0 }, i, a, l, p = 0;
-	while (scanf("%d", &x) != EOF)
+	int input;
+	while (scanf("%d", &input) != EOF)
 	{
-		tmp = x;
-		for (i = 9; i >= 0; i--)
+		if (input == 0)
 		{
-			n[i] = tmp % 10;
-			tmp /= 10;
-		}
-		if (x >= 1000000000)a = 0;
-		else if (x >= 100000000)a = 1;
-		else if (x >= 10000000)a = 2;
-		else if (x >= 1000000)a = 3;
-		else if (x >= 100000)a = 4;
-		else if (x >= 10000)a = 5;
-		else if (x >= 1000)a = 6;
-		else if (x >= 100)a = 7;
-		else if (x >= 10)a = 8;
-		else if (x >= 1)a = 9;
-		for (i = 9; i = 0; i--)
-		{
-			if (n[i] == 0)l++;
-			else break;
+			printf("箂\n");
+			continue;
 		}
 
-		for (i = a; i<10; i++)
-		{
-			switch (n[i])
-			{
-			case 0:if ((i == 5 && n[4] != 0) || (i == 9 && n[8] != 0) || p == 1 && n[i + 1] == 0)break;
-				printf("箂"); p = 1; break;
-			case 1:printf("滁"); p = 0; break;
-			case 2:printf("禠"); p = 0; break;
-			case 3:printf("把"); p = 0; break;
-			case 4:printf("竩"); p = 0; break;
-			case 5:printf("ヮ"); p = 0; break;
-			case 6:printf("嘲"); p = 0; break;
-			case 7:printf("琺"); p = 0; break;
-			case 8:printf(""); p = 0; break;
-			case 9:printf("╤"); p = 0; break;
-			}
+		int num[MAX_INPUT_BITS] = { 0 };
 
-			if (x >= 100000000 && i == 1 && n[1] != 0)
-			{
-				printf("货"); p = 1;
-			}
-			if (x >= 10000 && i == 5)
-			{
-				printf("窾"); p = 1;
-			}
-			if ((x >= 1000 && i == 6 && n[6] != 0) || (x >= 10000000 && i == 2 && n[2] != 0))
-			{
-				printf(""); p = 1;
-			}
-			if ((x >= 100 && i == 7 && n[7] != 0) || (x >= 1000000 && i == 3 && n[3] != 0))
-			{
-				printf("ㄕ"); p = 1;
-			}
-			if ((x >= 10 && i == 8 && n[8] != 0) || (i == 0 && x >= 100000000 && n[0] != 0) || (x >= 10000 && i == 4 && n[4] != 0))
-				printf("珺");
+		int i;
+		for (i = 0;
+			i < MAX_INPUT_BITS;
+			i++)
+		{
+			num[i] = input % 10;
+			input /= 10;
+			if (input == 0)
+				break;
+		}
+
+		debug(
+			printf("[DEBUG] ");
+		int DEBUG_i;
+		for (DEBUG_i = MAX_INPUT_BITS - 1;
+			DEBUG_i >= 0;
+			DEBUG_i--)
+		{
+			printf("%d", num[DEBUG_i]);
 		}
 		printf("\n");
+		);
+
+		bool isZero = true, isContinue = false;
+		for (i = MAX_INPUT_BITS - 1;
+			i >= 0;
+			i--)
+		{
+			if (checkZero(num, i))
+				break;
+
+			isZero = isZero && (num[i] == 0);
+			if (isZero)
+				continue;
+			switch (num[i])
+			{
+			case 1:printf("滁"); isContinue = false; break;
+			case 2:printf("禠"); isContinue = false; break;
+			case 3:printf("把"); isContinue = false; break;
+			case 4:printf("竩"); isContinue = false; break;
+			case 5:printf("ヮ"); isContinue = false; break;
+			case 6:printf("嘲"); isContinue = false; break;
+			case 7:printf("琺"); isContinue = false; break;
+			case 8:printf(""); isContinue = false; break;
+			case 9:printf("╤"); isContinue = false; break;
+			case 0:
+				if (!isContinue)
+					printf("箂");
+				isContinue = true;
+			}
+
+			if (isContinue)
+				continue;
+
+			switch (i % 4)
+			{
+			case 1:printf("珺"); break;
+			case 2:printf("ㄕ"); break;
+			case 3:printf(""); break;
+			}
+
+			switch (i / 4)
+			{
+			case 1:printf("窾"); break;
+			case 2:printf("货"); break;
+			}
+		}
+		printf("\n");
+
 	}
 
 	return 0;
