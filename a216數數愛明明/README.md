@@ -37,3 +37,7 @@
 
 出處：  
 	[VacationClub](http://zerojudge.tw/UserStatistic?account=VacationClub)
+
+- - -
+###公式推導過程
+![公式推導](公式推導.bmp)
