@@ -88,6 +88,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a248新手訓練 ~ 陣列�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a414位元運算之進位篇", "a414位元運算之進位篇\a414位元運算之進位篇.vcxproj", "{4466C81C-938A-45DE-8CC1-95D204BC5B0D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a738最大公约数", "a738最大公约数\a738最大公约数.vcxproj", "{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -416,6 +418,14 @@ Global
 		{4466C81C-938A-45DE-8CC1-95D204BC5B0D}.Release|x64.Build.0 = Release|x64
 		{4466C81C-938A-45DE-8CC1-95D204BC5B0D}.Release|x86.ActiveCfg = Release|Win32
 		{4466C81C-938A-45DE-8CC1-95D204BC5B0D}.Release|x86.Build.0 = Release|Win32
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Debug|x64.ActiveCfg = Debug|x64
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Debug|x64.Build.0 = Debug|x64
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Debug|x86.ActiveCfg = Debug|Win32
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Debug|x86.Build.0 = Debug|Win32
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Release|x64.ActiveCfg = Release|x64
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Release|x64.Build.0 = Release|x64
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Release|x86.ActiveCfg = Release|Win32
+		{EC3CF3FF-3956-4A9A-988B-DBEB5E1F6FF5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
