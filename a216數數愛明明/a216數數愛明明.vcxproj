@@ -162,6 +162,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="公式推導.docx" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="output.txt" />
@@ -170,6 +171,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="公式推導.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
