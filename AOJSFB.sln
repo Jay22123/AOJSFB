@@ -108,6 +108,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "已廢棄題庫", "已廢�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a017五則運算", "a017五則運算\a017五則運算.vcxproj", "{57BF8400-9BDD-4541-9C8C-6C7923B10383}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d016後序運算法", "d016後序運算法\d016後序運算法.vcxproj", "{55CDA715-BD47-415D-942D-4ECE055A2223}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -468,6 +470,14 @@ Global
 		{57BF8400-9BDD-4541-9C8C-6C7923B10383}.Release|x64.Build.0 = Release|x64
 		{57BF8400-9BDD-4541-9C8C-6C7923B10383}.Release|x86.ActiveCfg = Release|Win32
 		{57BF8400-9BDD-4541-9C8C-6C7923B10383}.Release|x86.Build.0 = Release|Win32
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Debug|x64.ActiveCfg = Debug|x64
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Debug|x64.Build.0 = Debug|x64
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Debug|x86.ActiveCfg = Debug|Win32
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Debug|x86.Build.0 = Debug|Win32
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Release|x64.ActiveCfg = Release|x64
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Release|x64.Build.0 = Release|x64
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Release|x86.ActiveCfg = Release|Win32
+		{55CDA715-BD47-415D-942D-4ECE055A2223}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -517,5 +527,6 @@ Global
 		{00EFBB38-6457-407D-84F3-4BF547CF1526} = {1542211F-20A6-4917-A084-F765F9BD2385}
 		{026DBACC-C0F0-4609-8A78-AC49A193128F} = {BB4F4C7D-0388-4BE7-9BC1-46BE9DC0E3A9}
 		{57BF8400-9BDD-4541-9C8C-6C7923B10383} = {1542211F-20A6-4917-A084-F765F9BD2385}
+		{55CDA715-BD47-415D-942D-4ECE055A2223} = {1542211F-20A6-4917-A084-F765F9BD2385}
 	EndGlobalSection
 EndGlobal
