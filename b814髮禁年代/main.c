@@ -22,17 +22,16 @@ int main(int argc, char *argv[])
 		scanf("%d", &T);
 		debug(printf("[DEBUG] %d\n", T));
 
-		int i;
-		for (i = 0; i < T; i++)
+		int day;
+		for (day = 0; day < T; day++)
 		{
-			int l, r;
+			int l, r, count = 0;
 			scanf("%d %d", &l, &r);
 			debug(printf("[DEBUG] [%d,%d)\n", l, r));
 
-			int j, count = 0;
-			for (j = l - 1; j < r - 1; j++)
+			for (l = l - 1; l < r - 1; l++)
 			{
-				if (input[j] == input[j + 1])
+				if (input[l] == input[l + 1])
 					count++;
 			}
 			printf("%d\n", count);
