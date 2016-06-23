@@ -6,17 +6,35 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define N 100000
 
 int main(int argc, char *argv[])
 {
-	char input[N + 1] = { NULL };
+	char input, inputPrev;
 
-	while (scanf("%s", &input) != EOF)
+	while (scanf("%c", &input) != EOF)
 	{
-		unsigned int sum[N] = { 0 };
-		debug(printf("[DEBUG] %s\n", input));
+		debug(printf("[DEBUG] %c", input));
+
+		unsigned int count = 0, sum[N] = { 0 };
+		while (true)
+		{
+			inputPrev = input;
+			scanf("%c", &input);
+			if (input == '\n')
+				break;
+			debug(printf("%c", input));
+
+			++count;
+
+			if (inputPrev == input)
+				sum[count - 1]++;
+
+			sum[count] += sum[count - 1];
+		}
+		debug(printf("\n"));
 
 		int T;
 		scanf("%d", &T);
@@ -29,12 +47,10 @@ int main(int argc, char *argv[])
 			scanf("%d %d", &l, &r);
 			debug(printf("[DEBUG] [%d,%d)\n", l, r));
 
-			for (l = l - 1; l < r - 1; l++)
-			{
-				if (input[l] == input[l + 1])
-					count++;
-			}
-			printf("%d\n", count);
+			if (r - 2 == l - 1)
+				printf("%d\n", sum[l - 1] - sum[l - 2]);
+			else
+				printf("%d\n", sum[r - 2] - sum[l - 1]);
 		}
 	}
 
