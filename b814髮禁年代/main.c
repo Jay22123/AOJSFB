@@ -5,53 +5,62 @@
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
+#include <math.h>
 
 #define N 100000
 
 int main(int argc, char *argv[])
 {
-	char input, inputPrev;
+	char input[N + 1] = { '\0' };
 
-	while (scanf("%c", &input) != EOF)
+	while (scanf("%s", input) != EOF)
 	{
-		debug(printf("[DEBUG] %c", input));
+		debug(printf("[DEBUG] %s\n", input));
 
-		unsigned int count = 0, sum[N] = { 0 };
-		while (true)
-		{
-			inputPrev = input;
-			scanf("%c", &input);
-			if (input == '\n')
-				break;
-			debug(printf("%c", input));
-
-			++count;
-
-			if (inputPrev == input)
-				sum[count - 1]++;
-
-			sum[count] += sum[count - 1];
-		}
-		debug(printf("\n"));
-
-		int T;
+		int T = 0;
 		scanf("%d", &T);
 		debug(printf("[DEBUG] %d\n", T));
 
-		int day;
+		int day, min_index = N, max_index = 0,
+			*l = malloc(T * sizeof(int)),
+			*r = malloc(T * sizeof(int));
 		for (day = 0; day < T; day++)
 		{
-			int l, r, count = 0;
-			scanf("%d %d", &l, &r);
-			debug(printf("[DEBUG] [%d,%d)\n", l, r));
+			scanf("%d %d", (l + day), (r + day));
+			debug(printf("[DEBUG] [%d,%d)\n",
+				*(l + day), *(r + day)));
 
-			if (r - 2 == l - 1)
-				printf("%d\n", sum[l - 1] - sum[l - 2]);
-			else
-				printf("%d\n", sum[r - 2] - sum[l - 1]);
+			--(*(l + day));
+			--(*(r + day));
+
+			min_index = (int)fmin(min_index,
+				fmin(*(l + day), *(r + day)));
+			max_index = (int)fmax(max_index,
+				fmax(*(l + day), *(r + day)));
 		}
+
+		int i, *sum = malloc(T * sizeof(int));
+		memset(sum, 0, T * sizeof(int));
+		for (i = min_index; i < max_index; i++)
+		{
+			if (input[i] == input[i + 1])
+				for (day = 0; day < T; day++)
+				{
+					if (*(l + day) <= i && i < *(r + day))
+						(*(sum + day))++;
+				}
+		}
+
+		for (day = 0; day < T; day++)
+		{
+			printf("%d\n", *(sum + day));
+		}
+
+		free(l);
+		free(r);
+		free(sum);
 	}
 
 	return 0;
