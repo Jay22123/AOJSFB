@@ -35,10 +35,8 @@ int main(int argc, char *argv[])
 			--(*(l + day));
 			--(*(r + day));
 
-			min_index = (int)fmin(min_index,
-				fmin(*(l + day), *(r + day)));
-			max_index = (int)fmax(max_index,
-				fmax(*(l + day), *(r + day)));
+			min_index = (int)fmin(min_index, *(l + day));
+			max_index = (int)fmax(max_index, *(r + day));
 		}
 
 		int i, *sum = malloc(T * sizeof(int));
