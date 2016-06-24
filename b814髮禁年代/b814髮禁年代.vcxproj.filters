@@ -21,6 +21,7 @@
     <Text Include="stdin.txt" />
     <Text Include="stdout.txt" />
     <Text Include="output.txt" />
+    <Text Include="stdinMax.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">

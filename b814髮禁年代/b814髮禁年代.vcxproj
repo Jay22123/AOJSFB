@@ -166,6 +166,7 @@
   <ItemGroup>
     <Text Include="output.txt" />
     <Text Include="stdin.txt" />
+    <Text Include="stdinMax.txt" />
     <Text Include="stdout.txt" />
   </ItemGroup>
   <ItemGroup>
