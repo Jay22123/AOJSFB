@@ -134,6 +134,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "b790The Maximum Subarray", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "b792The Coin Change Problem", "b792The Coin Change Problem\b792The Coin Change Problem.vcxproj", "{4541A5F5-C923-4E68-A772-E3F2B2F6C00A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "b789The Longest Increasing Subsequence", "b789The Longest Increasing Subsequence\b789The Longest Increasing Subsequence.vcxproj", "{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -590,6 +592,14 @@ Global
 		{4541A5F5-C923-4E68-A772-E3F2B2F6C00A}.Release|x64.Build.0 = Release|x64
 		{4541A5F5-C923-4E68-A772-E3F2B2F6C00A}.Release|x86.ActiveCfg = Release|Win32
 		{4541A5F5-C923-4E68-A772-E3F2B2F6C00A}.Release|x86.Build.0 = Release|Win32
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Debug|x64.ActiveCfg = Debug|x64
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Debug|x64.Build.0 = Debug|x64
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Debug|x86.ActiveCfg = Debug|Win32
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Debug|x86.Build.0 = Debug|Win32
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x64.ActiveCfg = Release|x64
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x64.Build.0 = Release|x64
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x86.ActiveCfg = Release|Win32
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -651,5 +661,6 @@ Global
 		{CC603086-0965-4BF8-AFCA-A2D2F9E65E7F} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
 		{EADC5A27-7320-40BF-8D3A-C611F352B7D5} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
 		{4541A5F5-C923-4E68-A772-E3F2B2F6C00A} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
+		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
 	EndGlobalSection
 EndGlobal
