@@ -1,7 +1,7 @@
 ##[b822：真˙拆散最大最小值Q___Q](http://zerojudge.tw/ShowProblem?problemid=b822)
 ======
 評分方式：Tolerant 
-記憶體限制：512 MB
+記憶體限制：64 MB
 
 1. 公開 測資點 (10%): 1.0s , <1M
 2. 公開 測資點 (10%): 1.0s , <1M
