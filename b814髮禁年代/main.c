@@ -7,48 +7,100 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
 #define N 100000
 
+typedef struct
+{
+	int index;
+	int length;
+} Length;
+
 int main(int argc, char *argv[])
 {
-	char input[N + 1] = { '\0' };
+	char input, cheakInput;
+	Length mat[N] = { 0 };
 
-	while (scanf("%s", input) != EOF)
+	int cheakInputIndex,
+		indexLenCount,
+		isContinuou,
+		T,
+		day,
+		*l = NULL,
+		*r = NULL,
+		i,
+		*sum = NULL;
+
+	while (scanf("%c", &input) != EOF)
 	{
-		debug(printf("[DEBUG] %s\n", input));
+		memset(mat, 0, sizeof(Length) * N);
+		debug(printf("[DEBUG] %c", input));
 
-		int T = 0;
+		cheakInputIndex = 1;
+		indexLenCount = 0;
+		isContinuou = 0;
+
+		while (1)
+		{
+			scanf("%c", &cheakInput);
+			debug(printf("%c", cheakInput));
+
+			if (input == cheakInput)
+			{
+				if (isContinuou == 0)
+					mat[indexLenCount].index = cheakInputIndex;
+				isContinuou++;
+			}
+			else if (isContinuou > 0)
+			{
+				mat[indexLenCount++].length = isContinuou;
+				isContinuou = 0;
+			}
+
+			if (cheakInput == '\n')
+				break;
+
+			input = cheakInput;
+			cheakInputIndex++;
+		}
+		debug(printf("\n"));
+
+		T = 0;
 		scanf("%d", &T);
 		debug(printf("[DEBUG] %d\n", T));
 
-		int day, min_index = N, max_index = 0,
-			*l = malloc(T * sizeof(int)),
-			*r = malloc(T * sizeof(int));
+		l = malloc(T * sizeof(int));
+		r = malloc(T * sizeof(int));
 		for (day = 0; day < T; day++)
 		{
 			scanf("%d %d", (l + day), (r + day));
 			debug(printf("[DEBUG] [%d,%d)\n",
 				*(l + day), *(r + day)));
 
-			--(*(l + day));
-			--(*(r + day));
-
-			min_index = (int)fmin(min_index, *(l + day));
-			max_index = (int)fmax(max_index, *(r + day));
+			/*--(*(l + day));
+			--(*(r + day));*/
 		}
 
-		int i, *sum = malloc(T * sizeof(int));
+		sum = malloc(T * sizeof(int));
 		memset(sum, 0, T * sizeof(int));
-		for (i = min_index; i < max_index; i++)
+		for (i = 0; i < indexLenCount; i++)
 		{
-			if (input[i] == input[i + 1])
-				for (day = 0; day < T; day++)
+			for (day = 0; day < T; day++)
+			{
+				if (*(l + day) <= mat[i].index + mat[i].length &&
+					mat[i].index < *(r + day))
 				{
-					if (*(l + day) <= i && i < *(r + day))
-						(*(sum + day))++;
+					(*(sum + day)) += mat[i].length;
+
+					if (mat[i].index < *(l + day))
+						(*(sum + day)) -= *(l + day) - mat[i].index;
+
+					if (mat[i].index + mat[i].length > *(r + day))
+						(*(sum + day)) -=
+						((mat[i].index + mat[i].length) - *(r + day));
+					// 終點位址=起始位址+長度
 				}
+			}
 		}
 
 		for (day = 0; day < T; day++)
