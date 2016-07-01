@@ -1,3 +1,1 @@
-hello, world
-hello, C++
-hello, mary
+10
