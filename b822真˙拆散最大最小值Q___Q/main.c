@@ -5,14 +5,40 @@
 #endif
 
 #include <stdio.h>
+#include <math.h>
 
 int main(int argc, char *argv[])
 {
-	char s[1000] = { NULL };
+	int n = 0;
 
-	while (scanf("%s", &s) != EOF)
+	/*
+		2 <= n <= 2000
+		1 <= a_i <= n
+	*/
+
+	while (scanf("%d", &n) != EOF)
 	{
-		printf("hello, %s\n", s);
+		int i, a_i, maxIndex, minIndex;
+		for (i = 1; i <= n; i++)
+		{
+			scanf("%d", &a_i);
+
+			if (a_i == n)
+				maxIndex = i;
+			else if (a_i == 1)
+				minIndex = i;
+		}
+		debug(
+			printf("[DEBUG] maxIndex=%d, minIndex=%d\n"
+				, maxIndex, minIndex)
+		);
+
+		printf("%d\n",
+			(int)fmax(
+				fmax(n - maxIndex, maxIndex - 1),
+				fmax(n - minIndex, minIndex - 1)
+			)
+		);
 	}
 
 	return 0;
