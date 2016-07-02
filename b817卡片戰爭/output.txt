@@ -1,3 +1,6 @@
-hello, world
-hello, C++
-hello, mary
+[DEBUG] n=5
+[DEBUG] k1=4
+[DEBUG] 2 3 5 1 
+[DEBUG] k2=1
+[DEBUG] 4 
+3 1
