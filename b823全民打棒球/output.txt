@@ -1,3 +1,9 @@
-hello, world
-hello, C++
-hello, mary
+[DEBUG] -1
+[DEBUG] -1
+[DEBUG] 0
+[DEBUG] 1
+[DEBUG] 0
+[DEBUG] 2
+[DEBUG] 0
+[DEBUG] -1
+[DEBUG] 4
