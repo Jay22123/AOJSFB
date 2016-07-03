@@ -19,17 +19,15 @@ Classmate classmate[100000] = { 0 };
 傳回 0代表 a = b
 傳回 1代表 a > b
 */
-int compare(const void *A, const void *B)
+int compare(const Classmate *A, const Classmate *B)
 {
-	Classmate *a = A, *b = B;
+	if (A->Ch + A->En != B->Ch + B->En)
+		return (A->Ch + A->En < B->Ch + B->En) ? -1 : 1;
 
-	if (a->Ch + a->En != b->Ch + b->En)
-		return (a->Ch + a->En < b->Ch + b->En) ? -1 : 1;
-
-	if (a->Ch < b->Ch)
+	if (A->Ch < B->Ch)
 		return -1;
 
-	if (a->En < b->En)
+	if (A->En < B->En)
 		return -1;
 
 	return 1;
