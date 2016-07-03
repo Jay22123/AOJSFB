@@ -5,90 +5,34 @@
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct _Classmate
 {
 	float Ch, En, height;
-	int *prev, *next;
 }Classmate;
 
-Classmate classmate[100000] = { -1 };
-int headIndex, lastIndex;
+Classmate classmate[100000] = { 0 };
 
-enum CompareType
+/*
+傳回-1代表 a < b
+傳回 0代表 a = b
+傳回 1代表 a > b
+*/
+int compare(const void *A, const void *B)
 {
-	LESS,
-	MORE
-};
+	Classmate *a = A, *b = B;
 
-int compare(const int aIndex, const int bIndex)
-{
-	int a = classmate[aIndex].Ch + classmate[aIndex].En,
-		b = classmate[bIndex].Ch + classmate[bIndex].En;
+	if (a->Ch + a->En != b->Ch + b->En)
+		return (a->Ch + a->En < b->Ch + b->En) ? -1 : 1;
 
-	if (a == b)
-	{
-		if (classmate[aIndex].Ch == classmate[bIndex].Ch)
-			return (classmate[aIndex].En < classmate[bIndex].En) ? LESS : MORE;
+	if (a->Ch < b->Ch)
+		return -1;
 
-		return (classmate[aIndex].Ch < classmate[bIndex].Ch) ? LESS : MORE;
-	}
-	return (a < b) ? LESS : MORE;
-}
+	if (a->En < b->En)
+		return -1;
 
-void sort(int index)
-{
-	if (index == 0)
-	{
-		headIndex = lastIndex = 0;
-	}
-	else
-	{
-		if (compare(index, headIndex) == LESS)
-		{// 最小插入
-			classmate[index].prev = -1;
-			classmate[index].next = headIndex;
-			classmate[headIndex].prev = index;
-			headIndex = index;
-		}
-		else if (compare(lastIndex, index) == LESS)
-		{// 最大插入
-			classmate[index].prev = lastIndex;
-			classmate[index].next = -1;
-			classmate[lastIndex].next = index;
-			lastIndex = index;
-		}
-		else
-		{// 其餘插入
-			int currentIndex = headIndex;
-			while (currentIndex >= 0)
-			{
-				if (compare(currentIndex, index) == MORE)
-				{
-					classmate[index].prev = classmate[currentIndex].prev;
-					classmate[index].next = currentIndex;
-					classmate[currentIndex].prev = index;
-				}
-
-				currentIndex = classmate[currentIndex].next;
-			}
-		}
-	}
-}
-
-void printSort()
-{
-	int currentIndex = headIndex;
-	while (currentIndex >= 0)
-	{
-		printf("%f %f %f\n",
-			classmate[currentIndex].Ch,
-			classmate[currentIndex].En,
-			classmate[currentIndex].height
-		);
-
-		currentIndex = classmate[currentIndex].next;
-	}
+	return 1;
 }
 
 
@@ -98,7 +42,6 @@ int main(int argc, char *argv[])
 
 	while (scanf("%d", &N) != EOF)
 	{
-		headIndex = lastIndex = -1;
 		debug(printf("[DEBUG] %d\n", N));
 
 		Classmate *head = &classmate[0];
@@ -116,13 +59,34 @@ int main(int argc, char *argv[])
 					classmate[i].En,
 					classmate[i].height)
 			);
-			sort(i);
 		}
+		qsort(classmate, N, sizeof(Classmate), compare);
+
 		debug(
-			printf("[DEBUG] printSort:\n"); printSort(); printf("\n");
+			printf("[DEBUG] qsort start\n");
+		int DEBUG_qsort_i;
+		for (DEBUG_qsort_i = 0;
+			DEBUG_qsort_i < N;
+			DEBUG_qsort_i++)
+		{
+			printf("[DEBUG] %f %f %f\n",
+				classmate[DEBUG_qsort_i].Ch,
+				classmate[DEBUG_qsort_i].En,
+				classmate[DEBUG_qsort_i].height);
+		}
+		printf("[DEBUG] qsort end\n");
 		);
 
-		int K = 0;
+		int K = 0, A, B;
+		for (A = 0; A < N - 1; A++)
+		{
+			for (B = A + 1; B < N; B++)
+			{
+				if (classmate[A].height >
+					classmate[B].height)
+					K++;
+			}
+		}
 
 		printf("%d\n", K);
 	}
