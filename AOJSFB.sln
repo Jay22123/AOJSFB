@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a001哈囉", "a001哈囉\a001哈囉.vcxproj", "{3212C1DE-7FA2-41BF-AB91-8682963AD50F}"
 EndProject
@@ -135,6 +135,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "b792The Coin Change Problem", "b792The Coin Change Problem\b792The Coin Change Problem.vcxproj", "{4541A5F5-C923-4E68-A772-E3F2B2F6C00A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "b789The Longest Increasing Subsequence", "b789The Longest Increasing Subsequence\b789The Longest Increasing Subsequence.vcxproj", "{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "a263日期差幾天", "a263日期差幾天\a263日期差幾天.vcxproj", "{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -600,6 +602,14 @@ Global
 		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x64.Build.0 = Release|x64
 		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x86.ActiveCfg = Release|Win32
 		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6}.Release|x86.Build.0 = Release|Win32
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Debug|x64.ActiveCfg = Debug|x64
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Debug|x64.Build.0 = Debug|x64
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Debug|x86.ActiveCfg = Debug|Win32
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Debug|x86.Build.0 = Debug|Win32
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Release|x64.ActiveCfg = Release|x64
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Release|x64.Build.0 = Release|x64
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Release|x86.ActiveCfg = Release|Win32
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -662,5 +672,6 @@ Global
 		{EADC5A27-7320-40BF-8D3A-C611F352B7D5} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
 		{4541A5F5-C923-4E68-A772-E3F2B2F6C00A} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
 		{A48E7D1E-BFCE-4291-806C-EE0FC36A8CD6} = {DD7BEA82-BA1B-4D1B-AC6A-289C8E382654}
+		{6A5C4DE8-EC64-4195-A85F-FC3172200B9D} = {1542211F-20A6-4917-A084-F765F9BD2385}
 	EndGlobalSection
 EndGlobal
