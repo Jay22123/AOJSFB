@@ -23,17 +23,16 @@ bool isLeapYear(int year)
 	逢4000的倍數不閏， 例如：西元4000、8000年，不閏年。
 	參考資料 : http://tamweb.tam.gov.tw/faq/calendar-0409277-2.htm
 	*/
-	return (year % 400 == 0) ||
-		((year % 4 == 0) && (year % 100 != 0)) &&
-		(year % 4000 != 0);
+	return ((year % 4 == 0) && (year % 100 != 0)) ||
+		((year % 400 == 0) && (year % 4000 != 0));
 }
 
-inline int getDaysOfMonth(int year, int month)
+int getDaysOfMonth(int year, int month)
 {
 	switch (month)
 	{
 	case 2:
-		return (isLeapYear(year)) ? 28 : 29;
+		return (!isLeapYear(year)) ? 28 : 29;
 	case 4:
 	case 6:
 	case 9:
@@ -44,29 +43,70 @@ inline int getDaysOfMonth(int year, int month)
 	}
 }
 
-inline int getDaysOfYear(int year)
+int getDaysOfYear(int year)
 {
-	return isLeapYear(year) ? 365 : 366;
+	return !isLeapYear(year) ? 365 : 366;
 }
 
-inline int getDaysOfDate(Date date)
+int getDayInYear(Date date)
 {
-	int days = 0, year, month;
-	for (year = date.Year - 1; year > 0; year--)
-	{
-		days += getDaysOfYear(year);
-	}
-	for (month = date.Month - 1; month > 0; month--)
+	int month, days = 0;
+	for (month = 1; month < date.Month; month++)
 	{
 		days += getDaysOfMonth(date.Year, month);
 	}
 	days += date.Day;
+
 	return days;
+}
+
+int getDaysOfDate(Date date)
+{
+	int year, days = 0;
+	for (year = 1; year < date.Year; year++)
+	{
+		days += getDaysOfYear(year);
+	}
+	days += getDayInYear(date);
+	return days;
+}
+
+void swap(Date *a, Date *b)
+{
+	Date *tmp = a;
+	b = a;
+	a = tmp;
+}
+
+void MaxMin(Date *Max, Date *Min)
+{
+	if (Max->Year < Min->Year)
+		swap(Max, Min);
+	else if (Max->Month < Min->Month)
+		swap(Max, Min);
+	else if (Max->Day < Min->Day)
+		swap(Max, Min);
 }
 
 int daySub(Date a, Date b)
 {
-	return abs(getDaysOfDate(a) - getDaysOfDate(b));
+	MaxMin(&a, &b);
+	Date diff;
+	diff.Year = a.Year - b.Year;
+	diff.Month = a.Month - b.Month;
+	diff.Day = a.Day - b.Day;
+
+	int days = 0, year;
+	days += getDaysOfYear(b.Year) - getDayInYear(b);
+	int yearDays = 0;
+	for (year = b.Year + 1; year < a.Year; year++)
+	{
+		days += getDaysOfYear(year);
+		yearDays += getDaysOfYear(year);
+	}
+	days += getDayInYear(a);
+
+	return abs(getDaysOfDate(a)- getDaysOfDate(b));
 }
 
 
@@ -83,9 +123,6 @@ int main(int argc, char *argv[])
 		scanf("%d %d %d", &(date[1].Year), &(date[1].Month), &(date[1].Day));
 		debug(printf("[DEBUG] %04d %02d %02d\n",
 			date[1].Year, date[1].Month, date[1].Day));
-
-		debug(printf("[DEBUG] date[0]=%d\n", getDaysOfDate(date[0])));
-		debug(printf("[DEBUG] date[1]=%d\n", getDaysOfDate(date[1])));
 
 		printf("%d\n", daySub(date[0], date[1]));
 	}
