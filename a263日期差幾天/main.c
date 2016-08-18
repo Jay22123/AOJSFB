@@ -71,42 +71,9 @@ int getDaysOfDate(Date date)
 	return days;
 }
 
-void swap(Date *a, Date *b)
-{
-	Date *tmp = a;
-	b = a;
-	a = tmp;
-}
-
-void MaxMin(Date *Max, Date *Min)
-{
-	if (Max->Year < Min->Year)
-		swap(Max, Min);
-	else if (Max->Month < Min->Month)
-		swap(Max, Min);
-	else if (Max->Day < Min->Day)
-		swap(Max, Min);
-}
-
 int daySub(Date a, Date b)
 {
-	MaxMin(&a, &b);
-	Date diff;
-	diff.Year = a.Year - b.Year;
-	diff.Month = a.Month - b.Month;
-	diff.Day = a.Day - b.Day;
-
-	int days = 0, year;
-	days += getDaysOfYear(b.Year) - getDayInYear(b);
-	int yearDays = 0;
-	for (year = b.Year + 1; year < a.Year; year++)
-	{
-		days += getDaysOfYear(year);
-		yearDays += getDaysOfYear(year);
-	}
-	days += getDayInYear(a);
-
-	return abs(getDaysOfDate(a)- getDaysOfDate(b));
+	return abs(getDaysOfDate(a) - getDaysOfDate(b));
 }
 
 
