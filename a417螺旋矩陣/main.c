@@ -6,35 +6,66 @@
 
 #include <stdio.h>
 
-void setValue(int mat[100][100], int N, int level, int value)
+typedef enum _ClockDir
 {
-	const int ArrSize = (N + 2 * level - 1) - level;
-	int r, c;
+	CLOCK = 1,
+	INVERSE = 2
+}ClockDir;
 
-	for (c = level; c < ArrSize; c++)
+typedef enum _Dir
+{
+	NONE = 0,
+	UP = 1 << 3,
+	DOWN = 1 << 2,
+	LEFT = 1 << 1,
+	RIGHT = 1 << 0
+}Dir;
+
+const Dir DIRECTION[][4] =
+{ { NONE, NONE, NONE, NONE },
+ { RIGHT ,DOWN ,LEFT ,UP },
+{ DOWN ,RIGHT ,UP,LEFT } };
+
+void getIndex(int *row, int *col, Dir d)
+{
+	if (d & UP)
+		(*row)--;
+	if (d & DOWN)
+		(*row)++;
+	if (d & LEFT)
+		(*col)--;
+	if (d & RIGHT)
+		(*col)++;
+}
+
+void setValue(int mat[100][100], ClockDir dir, int N, int level, int value)
+{
+	if (N == 1)
 	{
-		mat[level][c] = value++;
+		mat[0][0] = value;
+		return;
 	}
 
-	for (r = level; r < ArrSize; r++)
+	int r = level, c = level;
+
+	int d;
+	for (d = 0; d < 4; d++)
 	{
-		mat[r][ArrSize] = value++;
+		int i;
+		for (i = 0; i < N - 1; i++)
+		{
+			mat[r][c] = value++;
+			getIndex(&r, &c, DIRECTION[dir][d]);
+		}
 	}
 
-	for (c = ArrSize; c > level; c--)
+	if (N - 2 > 1)
+		setValue(mat, dir, N - 2, level + 1, value);
+	else if (N - 2 == 1)
 	{
-		mat[ArrSize][c] = value++;
+		getIndex(&r, &c, RIGHT | DOWN);
+		mat[r][c] = value++;
 	}
-
-	for (r = ArrSize; r > level; r--)
-	{
-		mat[r][level] = value++;
-	}
-
-	if (N - 2 == 1)
-		mat[(ArrSize + level) / 2][(ArrSize + level) / 2] = value;
-	else if (N - 2 > 1)
-		setValue(mat, N - 2, level + 1, value);
 }
 
 void printMat(int mat[100][100], int N)
@@ -52,7 +83,7 @@ void printMat(int mat[100][100], int N)
 
 int main(int argc, char *argv[])
 {
-	int T = 0, mat[100][100] = { 0 };
+	int T = 0;
 
 	while (scanf("%d", &T) != EOF)
 	{
@@ -61,11 +92,11 @@ int main(int argc, char *argv[])
 		int t;
 		for (t = 0; t < T; t++)
 		{
-			int N, M;
+			int N, M, mat[100][100] = { 0 };
 			scanf("%d %d", &N, &M);
 			debug(printf("[DEBUG] %d %d\n", N, M));
 
-			setValue(mat, N, 0, 1);
+			setValue(mat, M, N, 0, 1);
 			printMat(mat, N);
 		}
 	}
