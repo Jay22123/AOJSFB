@@ -1,0 +1,8 @@
+[DEBUG] 1 1 2 1 -1 0
+[DEBUG] delta=-2.000000, delta_x=-2.000000, delta_y=-2.000000
+x=1.00
+y=1.00
+[DEBUG] 1 1 0 1 1 0
+Too many
+[DEBUG] 1 1 0 1 1 1
+No answer
